@@ -111,6 +111,10 @@ a{color:inherit}
 .capa .t{font-family:var(--titulo);font-weight:700;font-size:clamp(14px,1.55vw,19px);line-height:1.18;letter-spacing:.04em;text-transform:uppercase;text-wrap:balance}
 .capa .fil{width:28px;height:1px;background:var(--ouro);margin:12px auto}
 .capa .a{font-style:italic;color:var(--ouro);font-size:14px;line-height:1.2}
+.capa.foto{padding:0;background:#0C0A08}
+.capa.foto::after{display:none}
+.capa.foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;border-radius:inherit}
+.fav{display:inline-block;margin-left:8px;padding:2px 8px;border:1px solid var(--ouro);border-radius:999px;color:var(--ouro);font-size:10px;letter-spacing:.14em;vertical-align:middle}
 .corpo{padding:14px 16px 16px;display:flex;flex-direction:column;gap:4px;flex:1}
 .serie{margin:0;font-family:var(--titulo);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--pergaminho-3)}
 .corpo h3{margin:0;font-size:20px;line-height:1.2;font-weight:600}
@@ -251,21 +255,24 @@ footer p{margin:0;max-width:70ch}
 <script>
 /* ===================== ONDE MEXER =====================
    LIVROS: cole o link de afiliado da Amazon entre as aspas de "link".
+   "capa" é o arquivo da capa na pasta capas/ (sem capa, o site desenha uma).
+   "favorito:true" põe o selo "Favorito do Wis" no cartão.
    "video" é opcional: o link do vídeo do Wis sobre o livro.
    Livro sem link aparece com o botão "Link em breve".            */
 const LIVROS = [
-  {titulo:"As 48 Leis do Poder", autor:"Robert Greene", serie:"poder", frase:"Três mil anos de jogos de poder, destilados em 48 regras frias.", link:"", video:""},
-  {titulo:"O Príncipe", autor:"Nicolau Maquiavel", serie:"poder", frase:"O manual que ensinou governantes a serem temidos, e por que isso funciona.", link:"", video:""},
-  {titulo:"A Arte da Guerra", autor:"Sun Tzu", serie:"poder", frase:"Vencer sem lutar: estratégia escrita há mais de dois mil anos.", link:"", video:""},
-  {titulo:"O Livro dos Cinco Anéis", autor:"Miyamoto Musashi", serie:"poder", frase:"O espadachim invicto ensina a estratégia de quem nunca perdeu um duelo.", link:"", video:""},
-  {titulo:"A Arte da Sabedoria", autor:"Baltasar Gracián", serie:"poder", frase:"Trezentos conselhos curtos para viver entre gente difícil sem se perder.", link:"", video:""},
-  {titulo:"Meditações", autor:"Marco Aurélio", serie:"estoicismo", frase:"O diário de um imperador tentando manter a calma no topo do mundo.", link:"", video:""},
-  {titulo:"Sobre a Brevidade da Vida", autor:"Sêneca", serie:"estoicismo", frase:"A vida não é curta. Nós é que desperdiçamos boa parte dela.", link:"", video:""},
-  {titulo:"A Arte de Viver", autor:"Epicteto", serie:"estoicismo", frase:"Separar o que depende de você do que não depende. O resto é ruído.", link:"", video:""},
-  {titulo:"Antifrágil", autor:"Nassim Nicholas Taleb", serie:"estoicismo", frase:"Há coisas que ficam mais fortes com o caos. Aprenda a ser uma delas.", link:"", video:""},
-  {titulo:"1984", autor:"George Orwell", serie:"pressao", frase:"O Grande Irmão vigia, e a verdade é o que o Partido decide.", link:"", video:""},
-  {titulo:"A Revolução dos Bichos", autor:"George Orwell", serie:"pressao", frase:"A fazenda é dos animais, até alguns ficarem mais iguais que os outros.", link:"", video:""},
-  {titulo:"Senhor das Moscas", autor:"William Golding", serie:"pressao", frase:"Meninos numa ilha sem adultos. Quanto tempo dura a civilização?", link:"", video:""},
+  {titulo:"As 48 Leis do Poder", autor:"Robert Greene", serie:"poder", frase:"Três mil anos de jogos de poder, destilados em 48 regras frias.", capa:"capas/48-leis-do-poder.jpg", link:"https://link.amazon/B0ciGOpki", video:""},
+  {titulo:"O Príncipe", autor:"Nicolau Maquiavel", serie:"poder", frase:"O manual que ensinou governantes a serem temidos, e por que isso funciona.", capa:"capas/o-principe.jpg", link:"https://link.amazon/B00oU9A7k", video:""},
+  {titulo:"A Arte da Guerra", autor:"Sun Tzu", serie:"poder", favorito:true, frase:"Vencer sem lutar: estratégia escrita há mais de dois mil anos.", capa:"capas/a-arte-da-guerra.jpg", link:"https://link.amazon/B0i9c2Vzr", video:""},
+  {titulo:"O Livro dos Cinco Anéis", autor:"Miyamoto Musashi", serie:"poder", frase:"O espadachim invicto ensina a estratégia de quem nunca perdeu um duelo.", capa:"capas/o-livro-dos-cinco-aneis.jpg", link:"https://link.amazon/B0iGi3OMS", video:""},
+  {titulo:"A Arte da Sabedoria", autor:"Baltasar Gracián", serie:"poder", frase:"Trezentos conselhos curtos para viver entre gente difícil sem se perder.", capa:"capas/a-arte-da-sabedoria.jpg", link:"https://link.amazon/B0eMGWy6Q", video:""},
+  {titulo:"Meditações", autor:"Marco Aurélio", serie:"estoicismo", favorito:true, frase:"O diário de um imperador tentando manter a calma no topo do mundo.", capa:"capas/meditacoes.jpg", link:"https://link.amazon/B02SFxKzn", video:""},
+  {titulo:"Sobre a Brevidade da Vida", autor:"Sêneca", serie:"estoicismo", frase:"A vida não é curta. Nós é que desperdiçamos boa parte dela.", capa:"capas/sobre-a-brevidade-da-vida.jpg", link:"https://link.amazon/A04nKfY3W", video:""},
+  {titulo:"A Arte de Viver", autor:"Epicteto", serie:"estoicismo", frase:"Separar o que depende de você do que não depende. O resto é ruído.", capa:"capas/a-arte-de-viver.jpg", link:"https://link.amazon/B0fzNjXYa", video:""},
+  {titulo:"Combo estoico: os três juntos", autor:"Marco Aurélio, Epicteto e Sêneca", serie:"estoicismo", frase:"Meditações, A Arte de Viver e Sobre a Brevidade da Vida num pacote só.", capa:"capas/combo-estoico.jpg", link:"https://link.amazon/B0aZBjM2i", video:""},
+  {titulo:"Antifrágil", autor:"Nassim Nicholas Taleb", serie:"estoicismo", favorito:true, frase:"Há coisas que ficam mais fortes com o caos. Aprenda a ser uma delas.", capa:"capas/antifragil.jpg", link:"https://link.amazon/B08BgRuVD", video:""},
+  {titulo:"1984", autor:"George Orwell", serie:"pressao", favorito:true, frase:"O Grande Irmão vigia, e a verdade é o que o Partido decide.", capa:"capas/1984.jpg", link:"https://link.amazon/B0i5cRLYy", video:""},
+  {titulo:"A Revolução dos Bichos", autor:"George Orwell", serie:"pressao", favorito:true, frase:"A fazenda é dos animais, até alguns ficarem mais iguais que os outros.", capa:"capas/a-revolucao-dos-bichos.jpg", link:"https://link.amazon/B03ElhaIh", video:""},
+  {titulo:"Senhor das Moscas", autor:"William Golding", serie:"pressao", favorito:true, frase:"Meninos numa ilha sem adultos. Quanto tempo dura a civilização?", capa:"capas/senhor-das-moscas.jpg", link:"https://link.amazon/B05r1l794", video:""},
 ];
 
 const SERIES = {
@@ -309,9 +316,17 @@ function cartaoLivro(l){
   const art = el('article','livro'); art.dataset.serie = l.serie;
   const capa = el('div','capa'); capa.setAttribute('aria-hidden','true');
   capa.style.setProperty('--c1', s.c1); capa.style.setProperty('--c2', s.c2);
-  capa.append(el('span','selo','WISDOM'), el('span','t',l.titulo), el('span','fil'), el('span','a',l.autor));
+  if(l.capa){
+    capa.classList.add('foto');
+    const img = el('img'); img.alt = ''; img.loading = 'lazy'; img.src = l.capa;
+    capa.append(img);
+  } else {
+    capa.append(el('span','selo','WISDOM'), el('span','t',l.titulo), el('span','fil'), el('span','a',l.autor));
+  }
   const corpo = el('div','corpo');
-  corpo.append(el('p','serie',s.nome), el('h3',null,l.titulo), el('p','autor',l.autor), el('p','frase',l.frase));
+  const serie = el('p','serie',s.nome);
+  if(l.favorito) serie.append(el('span','fav','★ Favorito do Wis'));
+  corpo.append(serie, el('h3',null,l.titulo), el('p','autor',l.autor), el('p','frase',l.frase));
   const compra = el('div','compra');
   if(l.link){
     const a = linkFora(el('a','btn ouro','Comprar na Amazon'), true); a.href = l.link;
