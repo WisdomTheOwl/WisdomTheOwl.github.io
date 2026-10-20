@@ -42,7 +42,7 @@ a{color:inherit}
 .publi b{color:var(--ouro);font-weight:600;letter-spacing:.04em}
 
 /* topo */
-.topo{position:sticky;top:0;z-index:10;background:rgba(21,17,12,.88);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--linha)}
+.topo{position:sticky;top:0;z-index:10;background:rgba(21,17,12,.97);border-bottom:1px solid var(--linha)}
 .topo .envelope{display:flex;align-items:center;justify-content:space-between;gap:12px;height:64px}
 .marca{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0}
 .retrato{flex:none;border-radius:50%;border:1px solid var(--ouro);background:var(--breu-2) url(wis.jpg) 37% 41% / 220% auto no-repeat}
@@ -318,7 +318,7 @@ function cartaoLivro(l){
   capa.style.setProperty('--c1', s.c1); capa.style.setProperty('--c2', s.c2);
   if(l.capa){
     capa.classList.add('foto');
-    const img = el('img'); img.alt = ''; img.loading = 'lazy'; img.src = l.capa;
+    const img = el('img'); img.alt = ''; img.loading = 'lazy'; img.decoding = 'async'; img.width = 500; img.height = 750; img.src = l.capa;
     capa.append(img);
   } else {
     capa.append(el('span','selo','WISDOM'), el('span','t',l.titulo), el('span','fil'), el('span','a',l.autor));
