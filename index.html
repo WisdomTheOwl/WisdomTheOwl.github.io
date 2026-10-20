@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wisdom a Coruja · Livros e achados</title>
+<meta name="description" content="Os livros que o Wis leu, o desafio de adivinhar o livro e os achados da coruja, num lugar só.">
+<meta property="og:title" content="A estante do Wis">
+<meta property="og:description" content="Os livros que a coruja leu, o desafio de adivinhar o livro e os achados do Wis.">
+<meta property="og:image" content="wis.jpg">
+<meta name="theme-color" content="#15110C">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦉</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=EB+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --breu:#15110C; --breu-2:#1F1A14; --breu-3:#2A231A; --linha:#3A3023;
+  --pergaminho:#E8D8B4; --pergaminho-2:#B9AA88; --pergaminho-3:#857A62;
+  --ouro:#C6A664; --ambar:#E0A030;
+  --bordo:#5C1420; --bordo-2:#3A0C14; --verde:#1F4034; --tinta:#1E2F52;
+  --titulo:"Cinzel","Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
+  --texto:"EB Garamond","Palatino Linotype","Book Antiqua",Georgia,serif;
+  --raio:14px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;min-height:100vh;color:var(--pergaminho);font-family:var(--texto);font-size:18px;line-height:1.5;
+  background-color:var(--breu);
+  background-image:
+    radial-gradient(1100px 560px at 85% -10%, rgba(198,166,100,.10), transparent 60%),
+    radial-gradient(900px 520px at -15% 35%, rgba(92,20,32,.20), transparent 60%);
+  background-repeat:no-repeat;
+}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--ambar);outline-offset:3px;border-radius:6px}
+.envelope{max-width:1120px;margin:0 auto;padding:0 16px}
+
+/* aviso de publicidade */
+.publi{background:var(--bordo-2);border-bottom:1px solid var(--linha);font-size:15px;line-height:1.35;color:var(--pergaminho-2);text-align:center;padding:8px 16px}
+.publi b{color:var(--ouro);font-weight:600;letter-spacing:.04em}
+
+/* topo */
+.topo{position:sticky;top:0;z-index:10;background:rgba(21,17,12,.88);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--linha)}
+.topo .envelope{display:flex;align-items:center;justify-content:space-between;gap:12px;height:64px}
+.marca{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0}
+.retrato{flex:none;border-radius:50%;border:1px solid var(--ouro);background:var(--breu-2) url(wis.jpg) 37% 41% / 220% auto no-repeat}
+.marca .retrato{width:40px;height:40px}
+.marca strong{display:block;font-family:var(--titulo);font-weight:700;letter-spacing:.08em;font-size:17px;line-height:1.1;white-space:nowrap}
+.marca .legenda{display:block;font-size:13px;color:var(--pergaminho-3);line-height:1.2}
+.redes{display:flex;gap:8px}
+.pilula{font-size:15px;text-decoration:none;color:var(--pergaminho-2);border:1px solid var(--linha);border-radius:999px;padding:6px 13px;white-space:nowrap;transition:border-color .2s,color .2s}
+.pilula:hover{border-color:var(--ouro);color:var(--ouro)}
+@media (max-width:560px){.marca .legenda,.redes .ig{display:none}}
+
+/* abertura */
+.heroi{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center;padding:44px 0 12px}
+.olho{font-family:var(--titulo);color:var(--ouro);letter-spacing:.22em;font-size:14px;text-transform:uppercase;margin:0 0 14px}
+.heroi h1{font-family:var(--titulo);font-weight:700;font-size:clamp(38px,6vw,66px);line-height:1.04;margin:0 0 18px}
+.heroi h1 em{font-style:normal;color:var(--ouro)}
+.sub{font-size:21px;color:var(--pergaminho-2);max-width:34ch;margin:0 0 28px}
+.acoes{display:flex;flex-wrap:wrap;gap:12px}
+.btn{appearance:none;border:1px solid var(--ouro);background:transparent;color:var(--pergaminho);font:600 17px/1.1 var(--texto);padding:14px 22px;border-radius:999px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:transform .15s,background-color .2s,color .2s}
+.btn:hover{transform:translateY(-1px)}
+.btn.ouro{background:var(--ouro);color:var(--breu)}
+.btn.ouro:hover{background:#D4B676}
+.btn[disabled]{opacity:.5;cursor:not-allowed;transform:none;border-style:dashed;color:var(--pergaminho-3);border-color:var(--pergaminho-3)}
+.figura{position:relative;isolation:isolate;justify-self:center;width:min(100%,420px)}
+.figura img{display:block;width:100%;height:auto;
+  -webkit-mask-image:radial-gradient(ellipse 68% 70% at 50% 52%,#000 58%,transparent 100%);
+          mask-image:radial-gradient(ellipse 68% 70% at 50% 52%,#000 58%,transparent 100%)}
+.figura::before{content:"";position:absolute;inset:10% 4% 6%;border-radius:50%;background:radial-gradient(circle at 50% 42%,rgba(224,160,48,.20),transparent 66%);z-index:-1}
+@media (max-width:760px){
+  .heroi{grid-template-columns:1fr;gap:4px;padding:20px 0 4px;text-align:center}
+  .figura{order:-1;width:min(68%,270px)}
+  .sub{font-size:19px;margin-left:auto;margin-right:auto}
+  .heroi .acoes{justify-content:center}
+}
+
+/* abas */
+.abas{display:flex;gap:4px;border-bottom:1px solid var(--linha);margin:28px 0 30px;overflow-x:auto;scrollbar-width:none;scroll-margin-top:72px}
+.abas::-webkit-scrollbar{display:none}
+.aba{appearance:none;background:none;border:0;border-bottom:2px solid transparent;margin-bottom:-1px;color:var(--pergaminho-3);font:500 15px/1 var(--titulo);letter-spacing:.14em;text-transform:uppercase;padding:16px 14px;cursor:pointer;white-space:nowrap;transition:color .2s,border-color .2s}
+.aba:hover{color:var(--pergaminho)}
+.aba[aria-selected="true"]{color:var(--pergaminho);border-bottom-color:var(--ouro)}
+.aba small{font-family:var(--texto);letter-spacing:0;text-transform:none;font-size:14px;color:var(--pergaminho-3);margin-left:6px}
+@media (max-width:440px){.aba{padding:16px 10px;letter-spacing:.1em}.aba small{display:none}}
+
+.cabeca{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:24px}
+.cabeca h2{font-family:var(--titulo);font-size:clamp(26px,3.6vw,34px);margin:0;font-weight:700;line-height:1.15}
+.cabeca p{margin:6px 0 0;color:var(--pergaminho-2);max-width:54ch}
+.filtros{display:flex;flex-wrap:wrap;gap:8px}
+.chip{appearance:none;border:1px solid var(--linha);background:var(--breu-2);color:var(--pergaminho-2);font:15px/1 var(--texto);padding:9px 14px;border-radius:999px;cursor:pointer;transition:border-color .2s}
+.chip:hover{border-color:var(--ouro)}
+.chip[aria-pressed="true"]{border-color:var(--ouro);background:var(--ouro);color:var(--breu)}
+
+/* livros */
+.grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:22px}
+.livro{display:flex;flex-direction:column;background:var(--breu-2);border:1px solid var(--linha);border-radius:var(--raio);overflow:hidden;transition:border-color .2s,transform .2s}
+.livro:hover{border-color:#5A4A33;transform:translateY(-2px)}
+.capa{--c1:var(--bordo);--c2:#22080D;position:relative;aspect-ratio:2/3;margin:16px 16px 0;border-radius:3px 8px 8px 3px;
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.40) 0,rgba(0,0,0,0) 6%,rgba(255,255,255,.07) 7%,rgba(0,0,0,0) 10%),
+    radial-gradient(120% 80% at 70% 0%,rgba(255,255,255,.08),transparent 60%),
+    linear-gradient(165deg,var(--c1),var(--c2));
+  box-shadow:0 20px 30px -18px #000,inset 0 0 0 1px rgba(255,255,255,.05);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20% 13% 16% 17%}
+.capa::after{content:"";position:absolute;inset:6% 6% 6% 10%;border:1px solid rgba(198,166,100,.55);border-radius:2px;pointer-events:none}
+.capa .selo{position:absolute;top:10%;left:10%;right:6%;font-family:var(--titulo);font-size:10px;letter-spacing:.32em;color:rgba(198,166,100,.85)}
+.capa .t{font-family:var(--titulo);font-weight:700;font-size:clamp(14px,1.55vw,19px);line-height:1.18;letter-spacing:.04em;text-transform:uppercase;text-wrap:balance}
+.capa .fil{width:28px;height:1px;background:var(--ouro);margin:12px auto}
+.capa .a{font-style:italic;color:var(--ouro);font-size:14px;line-height:1.2}
+.corpo{padding:14px 16px 16px;display:flex;flex-direction:column;gap:4px;flex:1}
+.serie{margin:0;font-family:var(--titulo);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--pergaminho-3)}
+.corpo h3{margin:0;font-size:20px;line-height:1.2;font-weight:600}
+.autor{margin:0;color:var(--pergaminho-3);font-size:15px}
+.frase{color:var(--pergaminho-2);font-size:16px;line-height:1.4;margin:6px 0 12px;flex:1}
+.compra{display:flex;flex-direction:column;gap:6px}
+.compra .btn{width:100%;padding:12px 14px;font-size:16px}
+.nota{font-size:13px;color:var(--pergaminho-3);text-align:center}
+.video{font-size:15px;text-align:center;color:var(--ouro);text-decoration:none}
+.video:hover{text-decoration:underline}
+@media (max-width:520px){
+  .grade{grid-template-columns:1fr 1fr;gap:12px}
+  .capa{margin:10px 10px 0}
+  .corpo{padding:10px 11px 12px}
+  .corpo h3{font-size:17px}
+  .frase{font-size:15px}
+  .compra .btn{font-size:15px;padding:11px 8px}
+}
+
+/* desafio */
+.desafio{max-width:640px;margin:0 auto;background:var(--breu-2);border:1px solid var(--linha);border-radius:20px;padding:30px}
+.topo-q{display:flex;justify-content:space-between;gap:12px;font-family:var(--titulo);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--pergaminho-3)}
+.relogio{height:6px;background:var(--breu-3);border-radius:99px;margin:14px 0 26px;overflow:hidden}
+.relogio i{display:block;height:100%;transition:transform .1s linear;background:linear-gradient(90deg,var(--ambar),var(--ouro));border-radius:99px;transform-origin:left center}
+.relogio.pouco i{background:linear-gradient(90deg,#B8442F,var(--ambar))}
+.pista{font-size:clamp(24px,3.4vw,31px);line-height:1.28;font-style:italic;margin:0 0 8px;text-wrap:balance}
+.pista::before{content:"“";color:var(--ouro)}
+.pista::after{content:"”";color:var(--ouro)}
+.pergunta{color:var(--pergaminho-3);margin:0 0 22px;font-size:16px}
+.segundos{font-variant-numeric:tabular-nums;color:var(--ouro)}
+.opcoes{display:grid;gap:10px}
+.opcao{appearance:none;text-align:left;background:var(--breu);border:1px solid var(--linha);color:var(--pergaminho);font:18px/1.3 var(--texto);padding:15px 18px;border-radius:12px;cursor:pointer;transition:border-color .15s,background-color .15s}
+.opcao:hover:not([disabled]){border-color:var(--ouro)}
+.opcao[disabled]{cursor:default}
+.opcao.certa{border-color:#6F9A5A;background:rgba(31,64,52,.6)}
+.opcao.errada{border-color:#A2473A;background:rgba(92,20,32,.5)}
+.retorno{min-height:27px;margin:16px 0 0;color:var(--pergaminho-2);font-size:17px}
+.inicio,.fim{text-align:center}
+.inicio .retrato,.fim .retrato{display:block;width:116px;height:116px;margin:0 auto 14px}
+.inicio h3,.fim h3{font-family:var(--titulo);font-size:28px;margin:0 0 8px;line-height:1.15}
+.inicio p,.fim p{color:var(--pergaminho-2);margin:0 auto;max-width:40ch}
+.placar{font-family:var(--titulo);font-size:64px;color:var(--ouro);line-height:1;margin:6px 0 10px}
+.desafio .acoes{justify-content:center;margin-top:22px}
+@media (max-width:520px){.desafio{padding:22px 16px}.opcao{font-size:17px;padding:14px 15px}}
+
+/* achados */
+.vazio{border:1px dashed var(--linha);border-radius:20px;padding:40px 24px;text-align:center;max-width:640px;margin:0 auto;background:rgba(31,26,20,.6)}
+.vazio .retrato{display:block;width:96px;height:96px;margin:0 auto;filter:grayscale(.3)}
+.vazio h3{font-family:var(--titulo);font-size:26px;margin:16px 0 8px;line-height:1.15}
+.vazio p{color:var(--pergaminho-2);margin:0 auto 22px;max-width:44ch}
+.achado .foto{aspect-ratio:1;margin:16px 16px 0;border-radius:10px;background:var(--breu-3) center/cover no-repeat}
+.etiqueta{align-self:flex-start;font-family:var(--titulo);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ouro);border:1px solid rgba(198,166,100,.5);border-radius:99px;padding:4px 9px;margin-bottom:4px}
+@media (max-width:520px){.achado .foto{margin:10px 10px 0}}
+
+/* rodapé */
+footer{border-top:1px solid var(--linha);margin-top:72px;padding:32px 0 44px;color:var(--pergaminho-3);font-size:15px;line-height:1.5}
+footer .envelope{display:grid;gap:14px}
+footer p{margin:0;max-width:70ch}
+.redes-rodape{display:flex;flex-wrap:wrap;gap:10px}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<div class="publi"><b>#publi</b> · Os botões de compra são links de afiliado: o Wis ganha uma comissão e você paga o mesmo preço.</div>
+
+<header class="topo">
+  <div class="envelope">
+    <a class="marca" href="#" aria-label="Wisdom a Coruja, início">
+      <span class="retrato" aria-hidden="true"></span>
+      <span><strong>WISDOM A CORUJA</strong><span class="legenda">livros, desafios e achados</span></span>
+    </a>
+    <nav class="redes" aria-label="Redes do Wis">
+      <a class="pilula" href="https://www.tiktok.com/@tiowisdom" target="_blank" rel="noopener">TikTok</a>
+      <a class="pilula ig" href="https://www.instagram.com/corujawisdom/" target="_blank" rel="noopener">Instagram</a>
+    </nav>
+  </div>
+</header>
+
+<main class="envelope">
+  <section class="heroi">
+    <div>
+      <p class="olho">Wisdom a Coruja</p>
+      <h1>A estante do <em>Wis</em></h1>
+      <p class="sub">Os livros que a coruja leu, o desafio de adivinhar o livro e os achados do Wis, num lugar só.</p>
+      <div class="acoes">
+        <button class="btn ouro" type="button" data-ir="livros">Ver os livros</button>
+        <button class="btn" type="button" data-ir="desafio">Jogar o desafio</button>
+      </div>
+    </div>
+    <div class="figura">
+      <img src="wis.jpg" width="720" height="900" alt="Wis, a coruja maga de chapéu bordô, pousada num galho">
+    </div>
+  </section>
+
+  <div class="abas" id="abas" role="tablist" aria-label="Seções">
+    <button class="aba" role="tab" type="button" data-aba="livros" aria-controls="painel-livros">Livros <small id="conta-livros"></small></button>
+    <button class="aba" role="tab" type="button" data-aba="desafio" aria-controls="painel-desafio">Desafio <small>10 s</small></button>
+    <button class="aba" role="tab" type="button" data-aba="achados" aria-controls="painel-achados">Achados <small id="conta-achados"></small></button>
+  </div>
+
+  <section class="painel" id="painel-livros" role="tabpanel" aria-label="Livros">
+    <div class="cabeca">
+      <div>
+        <h2>Livros que o Wis leu</h2>
+        <p>Separados pelas séries dos vídeos. O botão de compra leva à Amazon por link de afiliado.</p>
+      </div>
+      <div class="filtros" id="filtros" role="group" aria-label="Filtrar por série"></div>
+    </div>
+    <div class="grade" id="grade-livros"></div>
+  </section>
+
+  <section class="painel" id="painel-desafio" role="tabpanel" aria-label="Desafio" hidden>
+    <div class="desafio" id="caixa-desafio" aria-live="polite"></div>
+  </section>
+
+  <section class="painel" id="painel-achados" role="tabpanel" aria-label="Achados" hidden>
+    <div id="area-achados"></div>
+  </section>
+</main>
+
+<footer>
+  <div class="envelope">
+    <p>Como associado da Amazon, o Wis recebe por compras qualificadas. Os botões “Comprar” e “Ver na loja” são links de afiliado (#publi): o preço para você é o mesmo.</p>
+    <p>Achado é produto que o Wis encontrou e indica. Não é análise de quem testou.</p>
+    <div class="redes-rodape">
+      <a class="pilula" href="https://www.tiktok.com/@tiowisdom" target="_blank" rel="noopener">TikTok · @tiowisdom</a>
+      <a class="pilula" href="https://www.instagram.com/corujawisdom/" target="_blank" rel="noopener">Instagram · @corujawisdom</a>
+    </div>
+    <p>© <span id="ano"></span> Wisdom a Coruja</p>
+  </div>
+</footer>
+
+<script>
+/* ===================== ONDE MEXER =====================
+   LIVROS: cole o link de afiliado da Amazon entre as aspas de "link".
+   "video" é opcional: o link do vídeo do Wis sobre o livro.
+   Livro sem link aparece com o botão "Link em breve".            */
+const LIVROS = [
+  {titulo:"As 48 Leis do Poder", autor:"Robert Greene", serie:"poder", frase:"Três mil anos de jogos de poder, destilados em 48 regras frias.", link:"", video:""},
+  {titulo:"O Príncipe", autor:"Nicolau Maquiavel", serie:"poder", frase:"O manual que ensinou governantes a serem temidos, e por que isso funciona.", link:"", video:""},
+  {titulo:"A Arte da Guerra", autor:"Sun Tzu", serie:"poder", frase:"Vencer sem lutar: estratégia escrita há mais de dois mil anos.", link:"", video:""},
+  {titulo:"O Livro dos Cinco Anéis", autor:"Miyamoto Musashi", serie:"poder", frase:"O espadachim invicto ensina a estratégia de quem nunca perdeu um duelo.", link:"", video:""},
+  {titulo:"A Arte da Sabedoria", autor:"Baltasar Gracián", serie:"poder", frase:"Trezentos conselhos curtos para viver entre gente difícil sem se perder.", link:"", video:""},
+  {titulo:"Meditações", autor:"Marco Aurélio", serie:"estoicismo", frase:"O diário de um imperador tentando manter a calma no topo do mundo.", link:"", video:""},
+  {titulo:"Sobre a Brevidade da Vida", autor:"Sêneca", serie:"estoicismo", frase:"A vida não é curta. Nós é que desperdiçamos boa parte dela.", link:"", video:""},
+  {titulo:"A Arte de Viver", autor:"Epicteto", serie:"estoicismo", frase:"Separar o que depende de você do que não depende. O resto é ruído.", link:"", video:""},
+  {titulo:"Antifrágil", autor:"Nassim Nicholas Taleb", serie:"estoicismo", frase:"Há coisas que ficam mais fortes com o caos. Aprenda a ser uma delas.", link:"", video:""},
+  {titulo:"1984", autor:"George Orwell", serie:"pressao", frase:"O Grande Irmão vigia, e a verdade é o que o Partido decide.", link:"", video:""},
+  {titulo:"A Revolução dos Bichos", autor:"George Orwell", serie:"pressao", frase:"A fazenda é dos animais, até alguns ficarem mais iguais que os outros.", link:"", video:""},
+  {titulo:"Senhor das Moscas", autor:"William Golding", serie:"pressao", frase:"Meninos numa ilha sem adultos. Quanto tempo dura a civilização?", link:"", video:""},
+];
+
+const SERIES = {
+  poder:      {nome:"Poder e estratégia",  c1:"#5C1420", c2:"#22080D"},
+  estoicismo: {nome:"Estoicismo",          c1:"#1F4034", c2:"#0B1913"},
+  pressao:    {nome:"O homem sob pressão", c1:"#1E2F52", c2:"#0B1225"},
+};
+
+/* ACHADOS: um por linha, só com link de afiliado.
+   Produto que o Wis não testou é "achado", nunca "review".
+   Exemplo: {nome:"", frase:"", loja:"Shopee", foto:"", link:""},   */
+const ACHADOS = [
+];
+
+/* DESAFIO: a pista, o livro certo e dois livros errados. */
+const DESAFIO = [
+  {pista:"Vencer sem precisar lutar é a maior das habilidades.", certo:"A Arte da Guerra", outros:["O Príncipe","Meditações"]},
+  {pista:"Se não der para ser amado e temido, é mais seguro ser temido.", certo:"O Príncipe", outros:["As 48 Leis do Poder","A Arte da Sabedoria"]},
+  {pista:"Um imperador romano escreve, só para si, como não perder a calma.", certo:"Meditações", outros:["Sobre a Brevidade da Vida","O Príncipe"]},
+  {pista:"Os animais tomam a fazenda dos homens, e os porcos assumem o comando.", certo:"A Revolução dos Bichos", outros:["1984","Senhor das Moscas"]},
+  {pista:"Um grupo de meninos fica preso numa ilha, sem nenhum adulto.", certo:"Senhor das Moscas", outros:["A Revolução dos Bichos","O Livro dos Cinco Anéis"]},
+  {pista:"Algumas coisas não só aguentam o caos: ficam mais fortes com ele.", certo:"Antifrágil", outros:["A Arte de Viver","As 48 Leis do Poder"]},
+  {pista:"A vida não é curta: nós é que desperdiçamos boa parte dela.", certo:"Sobre a Brevidade da Vida", outros:["Meditações","A Arte de Viver"]},
+  {pista:"Um espadachim que venceu dezenas de duelos escreve sobre estratégia.", certo:"O Livro dos Cinco Anéis", outros:["A Arte da Guerra","O Príncipe"]},
+  {pista:"Nunca ofusque o brilho do seu mestre.", certo:"As 48 Leis do Poder", outros:["O Príncipe","A Arte da Sabedoria"]},
+  {pista:"O Grande Irmão está de olho em você.", certo:"1984", outros:["A Revolução dos Bichos","Antifrágil"]},
+];
+const PERGUNTAS_POR_RODADA = 7;
+const SEGUNDOS = 10;
+/* ====================================================== */
+
+const reduz = matchMedia('(prefers-reduced-motion: reduce)').matches;
+function el(tag, cls, txt){ const e=document.createElement(tag); if(cls) e.className=cls; if(txt!=null) e.textContent=txt; return e; }
+function embaralhar(lista){ const a=lista.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function retrato(){ const r=el('span','retrato'); r.setAttribute('aria-hidden','true'); return r; }
+function linkFora(a, afiliado){ a.target='_blank'; a.rel = afiliado ? 'sponsored noopener' : 'noopener'; return a; }
+
+/* ---------- livros ---------- */
+function cartaoLivro(l){
+  const s = SERIES[l.serie];
+  const art = el('article','livro'); art.dataset.serie = l.serie;
+  const capa = el('div','capa'); capa.setAttribute('aria-hidden','true');
+  capa.style.setProperty('--c1', s.c1); capa.style.setProperty('--c2', s.c2);
+  capa.append(el('span','selo','WISDOM'), el('span','t',l.titulo), el('span','fil'), el('span','a',l.autor));
+  const corpo = el('div','corpo');
+  corpo.append(el('p','serie',s.nome), el('h3',null,l.titulo), el('p','autor',l.autor), el('p','frase',l.frase));
+  const compra = el('div','compra');
+  if(l.link){
+    const a = linkFora(el('a','btn ouro','Comprar na Amazon'), true); a.href = l.link;
+    compra.append(a, el('span','nota','link de afiliado · #publi'));
+  } else {
+    const b = el('button','btn','Link em breve'); b.type='button'; b.disabled = true; compra.append(b);
+  }
+  if(l.video){ const v = linkFora(el('a','video','Ver o vídeo do Wis →'), false); v.href = l.video; compra.append(v); }
+  corpo.append(compra);
+  art.append(capa, corpo);
+  return art;
+}
+function montarLivros(){
+  const grade = document.getElementById('grade-livros');
+  LIVROS.forEach(l => grade.append(cartaoLivro(l)));
+  document.getElementById('conta-livros').textContent = LIVROS.length;
+  const filtros = document.getElementById('filtros');
+  const opcoes = [['todos','Todos'], ...Object.entries(SERIES).map(([id,s]) => [id,s.nome])];
+  opcoes.forEach(([id,nome]) => {
+    const c = el('button','chip',nome); c.type='button'; c.setAttribute('aria-pressed', id==='todos');
+    c.onclick = () => {
+      filtros.querySelectorAll('.chip').forEach(x => x.setAttribute('aria-pressed', x===c));
+      grade.querySelectorAll('.livro').forEach(card => card.hidden = !(id==='todos' || card.dataset.serie===id));
+    };
+    filtros.append(c);
+  });
+}
+
+/* ---------- achados ---------- */
+function montarAchados(){
+  const area = document.getElementById('area-achados');
+  const conta = document.getElementById('conta-achados');
+  if(!ACHADOS.length){
+    conta.textContent = 'em breve';
+    const v = el('div','vazio');
+    const tk = linkFora(el('a','btn ouro','Seguir o Wis no TikTok'), false); tk.href = 'https://www.tiktok.com/@tiowisdom';
+    v.append(retrato(), el('h3',null,'O Wis ainda está garimpando'), el('p',null,'Os achados da coruja chegam aqui em breve. Siga o Wis para ver primeiro.'), tk);
+    area.append(v);
+    return;
+  }
+  conta.textContent = ACHADOS.length;
+  const cab = el('div','cabeca'); const tx = el('div');
+  tx.append(el('h2',null,'Achados do Wis'), el('p',null,'Coisas que a coruja encontrou e indica. O botão leva à loja por link de afiliado.'));
+  cab.append(tx);
+  const grade = el('div','grade');
+  ACHADOS.forEach(p => {
+    const art = el('article','livro achado');
+    const foto = el('div','foto'); foto.setAttribute('role','img'); foto.setAttribute('aria-label', p.nome);
+    if(p.foto) foto.style.backgroundImage = `url("${encodeURI(p.foto)}")`;
+    const corpo = el('div','corpo');
+    corpo.append(el('span','etiqueta','Achado'), el('h3',null,p.nome), el('p','autor',p.loja||''), el('p','frase',p.frase||''));
+    const compra = el('div','compra');
+    if(p.link){
+      const a = linkFora(el('a','btn ouro','Ver na loja'), true); a.href = p.link;
+      compra.append(a, el('span','nota','link de afiliado · #publi'));
+    } else {
+      const b = el('button','btn','Link em breve'); b.type='button'; b.disabled = true; compra.append(b);
+    }
+    corpo.append(compra); art.append(foto, corpo); grade.append(art);
+  });
+  area.append(cab, grade);
+}
+
+/* ---------- desafio ---------- */
+const caixa = document.getElementById('caixa-desafio');
+let rodada = [], idx = 0, pontos = 0, quadro = null, inicio = 0, travado = true;
+
+function pontosTexto(n){ return `${n} ${n===1 ? 'ponto' : 'pontos'}`; }
+function telaInicio(){
+  clearInterval(quadro); travado = true;
+  const box = el('div','inicio');
+  const total = Math.min(PERGUNTAS_POR_RODADA, DESAFIO.length);
+  const acoes = el('div','acoes'); const go = el('button','btn ouro','Começar'); go.type='button'; go.onclick = comecar; acoes.append(go);
+  box.append(retrato(), el('h3',null,'Desafio do Wis'), el('p',null,`Uma pista, três livros e ${SEGUNDOS} segundos. São ${total} perguntas. Quantas você acerta?`), acoes);
+  caixa.replaceChildren(box);
+}
+function comecar(){
+  rodada = embaralhar(DESAFIO).slice(0, Math.min(PERGUNTAS_POR_RODADA, DESAFIO.length));
+  idx = 0; pontos = 0; pergunta();
+}
+function pergunta(){
+  const q = rodada[idx]; travado = false;
+  const topo = el('div','topo-q'); const placar = el('span',null,pontosTexto(pontos));
+  topo.append(el('span',null,`Pergunta ${idx+1} de ${rodada.length}`), placar);
+  const relogio = el('div','relogio'); const barra = el('i'); relogio.append(barra);
+  const perg = el('p','pergunta','Que livro é esse? '); const seg = el('span','segundos',`${SEGUNDOS} s`); perg.append(seg);
+  const opcoes = el('div','opcoes');
+  embaralhar([q.certo, ...q.outros]).forEach(txt => {
+    const b = el('button','opcao',txt); b.type='button'; b.onclick = () => responder(txt, b); opcoes.append(b);
+  });
+  const retorno = el('p','retorno');
+  caixa.replaceChildren(topo, relogio, el('p','pista',q.pista), perg, opcoes, retorno);
+  inicio = performance.now();
+  const tique = () => {
+    const resta = Math.max(0, SEGUNDOS - (performance.now() - inicio)/1000);
+    barra.style.transform = `scaleX(${resta/SEGUNDOS})`;
+    seg.textContent = `${Math.ceil(resta)} s`;
+    relogio.classList.toggle('pouco', resta <= 3);
+    if(resta <= 0) responder(null, null);
+  };
+  clearInterval(quadro); quadro = setInterval(tique, 100); tique();
+}
+function responder(txt, botao){
+  if(travado) return; travado = true; clearInterval(quadro);
+  const q = rodada[idx]; const acertou = txt === q.certo; if(acertou) pontos++;
+  caixa.querySelectorAll('.opcao').forEach(b => {
+    b.disabled = true;
+    if(b.textContent === q.certo) b.classList.add('certa'); else if(b === botao) b.classList.add('errada');
+  });
+  caixa.querySelector('.topo-q span:last-child').textContent = pontosTexto(pontos);
+  caixa.querySelector('.retorno').textContent = acertou ? 'Acertou. O Wis aprova.'
+    : txt === null ? `O tempo acabou. Era ${q.certo}.` : `Não foi dessa vez. Era ${q.certo}.`;
+  const ultima = idx + 1 >= rodada.length;
+  const acoes = el('div','acoes'); const prox = el('button','btn ouro', ultima ? 'Ver o resultado' : 'Próxima'); prox.type='button';
+  prox.onclick = () => { idx++; ultima ? telaFim() : pergunta(); };
+  acoes.append(prox); caixa.append(acoes); prox.focus({preventScroll:true});
+}
+function veredito(n, total){
+  const r = n/total;
+  if(r === 1) return 'Coruja sábia. O Wis tira o chapéu para você.';
+  if(r >= .7) return 'Leitor de verdade. Falta pouco para o chapéu.';
+  if(r >= .4) return 'Bom começo. A estante está esperando por você.';
+  return 'O Wis recomenda começar pela aba Livros.';
+}
+function telaFim(){
+  const box = el('div','fim');
+  const acoes = el('div','acoes');
+  const de_novo = el('button','btn ouro','Jogar de novo'); de_novo.type='button'; de_novo.onclick = comecar;
+  const desafiar = el('button','btn','Desafiar um amigo'); desafiar.type='button';
+  desafiar.onclick = async () => {
+    const url = location.href.split('#')[0] + '#desafio';
+    const texto = `Fiz ${pontos} de ${rodada.length} no Desafio do Wis. Duvido você acertar mais.`;
+    if(navigator.share){ try{ await navigator.share({title:'Desafio do Wis', text:texto, url}); }catch(e){} return; }
+    try{ await navigator.clipboard.writeText(`${texto} ${url}`); desafiar.textContent = 'Link copiado'; }
+    catch(e){ window.prompt('Copie o link do desafio:', url); }
+  };
+  const livros = el('button','btn','Ver os livros'); livros.type='button'; livros.onclick = () => abrir('livros', true);
+  acoes.append(de_novo, desafiar, livros);
+  box.append(retrato(), el('h3',null,'Fim do desafio'), el('div','placar',`${pontos}/${rodada.length}`), el('p',null,veredito(pontos, rodada.length)), acoes);
+  caixa.replaceChildren(box);
+}
+
+/* ---------- abas ---------- */
+const ABAS = ['livros','desafio','achados'];
+function abrir(id, rolar){
+  document.querySelectorAll('.aba').forEach(a => a.setAttribute('aria-selected', a.dataset.aba === id));
+  ABAS.forEach(n => document.getElementById('painel-'+n).hidden = n !== id);
+  if(id === 'desafio') telaInicio(); else clearInterval(quadro);
+  history.replaceState(null, '', '#'+id);
+  if(rolar) document.getElementById('abas').scrollIntoView({behavior: reduz ? 'auto' : 'smooth', block:'start'});
+}
+document.querySelectorAll('.aba').forEach(a => a.onclick = () => abrir(a.dataset.aba, false));
+document.querySelectorAll('[data-ir]').forEach(b => b.onclick = () => abrir(b.dataset.ir, true));
+
+montarLivros();
+montarAchados();
+document.getElementById('ano').textContent = new Date().getFullYear();
+const pedida = location.hash.slice(1);
+abrir(ABAS.includes(pedida) ? pedida : 'livros', ABAS.includes(pedida));
+</script>
+</body>
+</html>
